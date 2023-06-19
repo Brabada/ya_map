@@ -4,7 +4,9 @@ from django.db import models
 
 
 class Place(models.Model):
-    title = models.CharField('Название', max_length=200)
+    title = models.CharField('Название',
+                             max_length=200,
+                             blank=False)
     description_short = models.TextField(
         'Краткое описание',
         blank=True)

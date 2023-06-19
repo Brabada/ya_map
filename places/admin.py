@@ -3,7 +3,7 @@ from django.utils.html import format_html
 
 from .models import Place, Image
 
-from adminsortable2.admin import SortableTabularInline, SortableAdminMixin
+from adminsortable2.admin import SortableTabularInline, SortableAdminBase
 # Register your models here.
 
 
@@ -12,11 +12,11 @@ class ImageAdmin(admin.ModelAdmin):
     pass
 
 
-class ImageInline(SortableTabularInline, admin.TabularInline):
+class ImageInline(SortableTabularInline):
+
     model = Image
     readonly_fields = ['place_preview']
     fields = ['image', 'place_preview', 'order', ]
-
 
     def place_preview(self, obj):
         return (
@@ -27,13 +27,9 @@ class ImageInline(SortableTabularInline, admin.TabularInline):
 
 
 @admin.register(Place)
-class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
-        ImageInline,
+        ImageInline
     ]
-
-
-
-
 
 
