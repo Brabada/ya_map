@@ -22,6 +22,7 @@ def parse_json(self, path_to_file):
 
 
 def download_images(image_urls):
+
     images_binary = []
     for image_url in image_urls:
         response = requests.get(image_url)
@@ -31,6 +32,7 @@ def download_images(image_urls):
 
 
 def create_place(self, place):
+
     defaults = {
         'description_short': place['description_short'],
         'description_long': place['description_long'],
@@ -42,6 +44,7 @@ def create_place(self, place):
         title=place['title'],
         defaults=defaults
     )
+
     logging.debug(f'Created is {created}')
     if not created:
         return
@@ -61,6 +64,7 @@ class Command(BaseCommand):
     help = "Parse title, coords, descriptions, image links from json and add as new Place object"
 
     def add_arguments(self, parser):
+
         parser.add_argument(
             "path_to_json",
             nargs='+',
