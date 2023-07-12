@@ -11,7 +11,7 @@ from places.models import Place, Image
 
 def parse_json(self, path_to_file):
 
-    if path_to_file[:4] == "http":
+    if path_to_file[:4] == 'http':
         response = requests.get(path_to_file)
         response.raise_for_status()
         place_data = response.json()
@@ -57,16 +57,16 @@ def create_place(self, place):
             order=cnt,
             place=created_place,
             image=file)
-    self.stdout.write(f"{place['title']} was added to DB.")
+    self.stdout.write(f'{place["title"]} was added to DB.')
 
 
 class Command(BaseCommand):
-    help = "Parse title, coords, descriptions, image links from json and add as new Place object"
+    help = 'Parse title, coords, descriptions, image links from json and add as new Place object'
 
     def add_arguments(self, parser):
 
         parser.add_argument(
-            "path_to_json",
+            'path_to_json',
             nargs='+',
             type=str,
             help='Relative, absolute path or link to place.json with filename. Ex: "./places_json/Воробьёвы горы.json", '
@@ -76,7 +76,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        for path_place in options["path_to_json"]:
+        for path_place in options['path_to_json']:
             try:
                 place = parse_json(self, path_place)
                 create_place(self, place)

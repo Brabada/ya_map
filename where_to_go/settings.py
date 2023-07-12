@@ -24,18 +24,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=True)
+DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", [])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
 
-SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", False)
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', False)
 
-SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE", False)
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', False)
 
-CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE", False)
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', False)
 
 # Application definition
 
@@ -88,7 +88,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'PASSWORD': env.str("DB_SECRET", default=""),
+        'PASSWORD': env.str('DB_SECRET', default=''),
     }
 }
 
