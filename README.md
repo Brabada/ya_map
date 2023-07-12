@@ -70,3 +70,12 @@ $ python manage.py load_place http://www.site.com/file1.json "./places_json/file
     }
 }
 ```
+
+## Запуск на проде
+
+Для запуска на проде помимо настроек указанных в "Переменные среды" нужно собрать статику из папки assets в папку static
+следующей командой:
+
+```bash
+$ python manage.py collectstatic
+```

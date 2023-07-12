@@ -9,23 +9,28 @@ class Place(models.Model):
         'Название',
         max_length=200,
         blank=False,
-        unique=True)
+        unique=True,
+    )
     description_short = models.TextField(
         'Краткое описание',
-        blank=True)
+        blank=True,
+    )
     description_long = HTMLField(
         'Полное описание',
-        blank=True)
+        blank=True,
+    )
     longitude = models.DecimalField(
         'Долгота',
         decimal_places=7,
         max_digits=10,
-        null=True)
+        null=True,
+    )
     latitude = models.DecimalField(
         'Широта',
         decimal_places=7,
         max_digits=10,
-        null=True)
+        null=True,
+    )
 
     def __str__(self):
         return f'{self.id}. {self.title}'
