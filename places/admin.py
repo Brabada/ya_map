@@ -31,5 +31,3 @@ class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ImageInline
     ]
-
-

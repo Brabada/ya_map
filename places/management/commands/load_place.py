@@ -9,7 +9,7 @@ import logging
 from places.models import Place, Image
 
 
-def parse_json(self, path_to_file):
+def parse_json(path_to_file):
 
     if path_to_file[:4] == 'http':
         response = requests.get(path_to_file)
@@ -69,8 +69,8 @@ class Command(BaseCommand):
             'path_to_json',
             nargs='+',
             type=str,
-            help='Relative, absolute path or link to place.json with filename. Ex: "./places_json/Воробьёвы горы.json", '
-                 '"places_json\Водопад Радужный.json" "'
+            help='Relative, absolute path or link to place.json with filename. Ex: "./places_json/Воробьёвы горы.json",'
+                 '" places_json\Водопад Радужный.json" "'
                  'https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/places/place.json"'
         )
 
@@ -78,7 +78,7 @@ class Command(BaseCommand):
 
         for path_place in options['path_to_json']:
             try:
-                place = parse_json(self, path_place)
+                place = parse_json(path_place)
                 create_place(self, place)
             except MultipleObjectsReturned:
                 message = f'There is multiple objects with {place["title"]} name with coords [{place["coordinates"]["lng"]},' \
