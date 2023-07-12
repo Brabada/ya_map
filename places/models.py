@@ -8,7 +8,6 @@ class Place(models.Model):
     title = models.CharField(
         'Название',
         max_length=200,
-        blank=False,
         unique=True,
     )
     description_short = models.TextField(
@@ -23,13 +22,11 @@ class Place(models.Model):
         'Долгота',
         decimal_places=7,
         max_digits=10,
-        null=True,
     )
     latitude = models.DecimalField(
         'Широта',
         decimal_places=7,
         max_digits=10,
-        null=True,
     )
 
     def __str__(self):
@@ -45,7 +42,6 @@ class Place(models.Model):
 class Image(models.Model):
     image = models.ImageField(
         'Изображение',
-        null=True,
     )
     place = models.ForeignKey(
         Place,
@@ -58,8 +54,6 @@ class Image(models.Model):
         'Порядок',
         default=0,
         db_index=True,
-        null=False,
-        blank=False,
     )
 
     def __str__(self):
