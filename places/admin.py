@@ -4,7 +4,6 @@ from django.utils.html import format_html
 from .models import Place, Image
 
 from adminsortable2.admin import SortableTabularInline, SortableAdminBase
-# Register your models here.
 
 
 @admin.register(Image)
@@ -18,10 +17,11 @@ class ImageInline(SortableTabularInline):
     readonly_fields = ['place_preview']
     fields = ['image', 'place_preview', 'order', ]
 
-    def place_preview(self, obj):
+    def place_preview(self, image):
         return (
             format_html(
-                f'<img src={obj.image.url} width=200px />'
+                '<img src={} height=200px />',
+                image.image.url
             )
         )
 

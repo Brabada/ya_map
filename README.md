@@ -2,7 +2,7 @@
 
 Данный сайт отображает карту и позволяет добавлять на неё точки с достопримечательностями.
 
-Достопримечательности можно добавлять/удалять/редактировать в админке по адресу "http://ip-вашего-сайта/admin".
+Достопримечательности можно добавлять/удалять/редактировать в админке по адресу 'http://ip-вашего-сайта/admin'.
 
 Код написан на Python 3.11 на Django 4.2 фреймворке. В качестве БД использован sqlite3.
 
@@ -51,7 +51,7 @@ $ python manage.py runserver
 на json-файл.
 
 ```bash
-$ python manage.py load_place http://www.site.com/file1.json "./places_json/file2.json" "C:\places_json\file3.json"
+$ python manage.py load_place http://www.site.com/file1.json './places_json/file2.json' "C:\places_json\file3.json"
 ```
 
 ## Пример JSON-файла
