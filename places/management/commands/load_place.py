@@ -9,26 +9,26 @@ import logging
 from places.models import Place, Image
 
 
-def parse_json(path_to_file):
+def parse_json(file_location):
 
-    if path_to_file[:4] == 'http':
-        response = requests.get(path_to_file)
+    if file_location[:4] == 'http':
+        response = requests.get(file_location)
         response.raise_for_status()
-        place_data = response.json()
+        place = response.json()
     else:
-        with open(path_to_file, 'r', encoding='utf-8') as json_file:
-            place_data = json.load(json_file)
-    return place_data
+        with open(file_location, 'r', encoding='utf-8') as json_file:
+            place = json.load(json_file)
+    return place
 
 
 def download_images(image_urls):
 
-    images_binary = []
+    image_binaries = []
     for image_url in image_urls:
         response = requests.get(image_url)
         response.raise_for_status()
-        images_binary.append(response.content)
-    return images_binary
+        image_binaries.append(response.content)
+    return image_binaries
 
 
 def create_place(self, place):
@@ -40,7 +40,7 @@ def create_place(self, place):
         'latitude': place['coordinates']['lat'],
     }
 
-    created_place, created = Place.objects.get_or_create(
+    place, created = Place.objects.get_or_create(
         title=place['title'],
         defaults=defaults
     )
@@ -50,12 +50,12 @@ def create_place(self, place):
         return
 
     binary_images = download_images(place['imgs'])
-    for cnt, image in enumerate(binary_images):
-        file = ContentFile(image, name=str(cnt))
+    for count, image in enumerate(binary_images):
+        file = ContentFile(image, name=str(count))
         logging.debug(file)
         Image.objects.create(
-            order=cnt,
-            place=created_place,
+            order=count,
+            place=place,
             image=file)
     self.stdout.write(f'{place["title"]} was added to DB.')
 
