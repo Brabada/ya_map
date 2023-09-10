@@ -51,6 +51,8 @@ class Image(models.Model):
         'Порядок',
         default=0,
         db_index=True,
+        null=True,
+        blank=True,
     )
 
     class Meta:
