@@ -11,7 +11,7 @@ from places.models import Place, Image
 
 def parse_json(file_location):
 
-    if file_location[:4] == 'http':
+    if file_location.startswith('http'):
         response = requests.get(file_location)
         response.raise_for_status()
         place = response.json()
