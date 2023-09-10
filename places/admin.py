@@ -31,3 +31,5 @@ class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
         ImageInline
     ]
     search_fields = ['title']
+    list_display = ['title', 'longitude', 'latitude']
+    ordering = ('-title',)
