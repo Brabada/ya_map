@@ -19,7 +19,7 @@ class ImageInline(SortableTabularInline):
     def place_preview(self, image):
         return (
             format_html(
-                '<img src={} height=200px />',
+                '<img src={} style="max-height: 200px; max-width: 400px />',
                 image.image.url
             )
         )
