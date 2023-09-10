@@ -40,7 +40,7 @@ def create_place(self, place):
         'latitude': place['coordinates']['lat'],
     }
 
-    place, created = Place.objects.get_or_create(
+    new_place, created = Place.objects.get_or_create(
         title=place['title'],
         defaults=defaults
     )
@@ -55,7 +55,7 @@ def create_place(self, place):
         logging.debug(file)
         Image.objects.create(
             order=count,
-            place=place,
+            place=new_place,
             image=file)
     self.stdout.write(f'{place["title"]} was added to DB.')
 
