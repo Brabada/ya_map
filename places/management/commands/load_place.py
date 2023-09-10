@@ -1,10 +1,10 @@
+import json
+import logging
+
+import requests
 from django.core.exceptions import MultipleObjectsReturned
 from django.core.files.base import ContentFile
 from django.core.management import BaseCommand
-import requests
-
-import json
-import logging
 
 from places.models import Place, Image
 

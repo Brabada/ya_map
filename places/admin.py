@@ -1,14 +1,13 @@
+from adminsortable2.admin import SortableTabularInline, SortableAdminBase
 from django.contrib import admin
 from django.utils.html import format_html
 
 from .models import Place, Image
 
-from adminsortable2.admin import SortableTabularInline, SortableAdminBase
-
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    autocomplete_fields = ['place']
 
 
 class ImageInline(SortableTabularInline):
@@ -31,3 +30,4 @@ class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ImageInline
     ]
+    search_fields = ['title']
