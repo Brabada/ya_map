@@ -50,8 +50,8 @@ class Image(models.Model):
     order = models.PositiveIntegerField(
         'Порядок',
         db_index=True,
-        null=True,
         blank=True,
+        default=0,
     )
 
     class Meta:
